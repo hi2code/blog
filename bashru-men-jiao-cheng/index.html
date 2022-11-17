@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>hi2code - Bash 入门教程</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://hi2code.github.io/blog/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">hi2code</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog">hi2code</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#bash-kuai-su-ru-men" class="toc-link">Bash 快速入门</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#zhun-bei-gong-zuo" class="toc-link">准备工作</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#zhu-shi" class="toc-link">注释</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#di-yi-ge-jiao-ben" class="toc-link">第一个脚本</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#zhi-xing-guo-cheng" class="toc-link">执行过程</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#bian-liang-tuo-zhan" class="toc-link">变量拓展</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#zi-ming-ling-tuo-zhan" class="toc-link">子命令拓展</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#xun-huan-yu-ju" class="toc-link">循环语句</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#tiao-jian-yu-ju" class="toc-link">条件语句</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/#can-kao-zi-liao" class="toc-link">参考资料</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;bashru-men-jiao-cheng&#x2F;">Bash 入门教程</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-11-17</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Bash 是大部分 Linux 发行版上的默认命令行环境（Shell）。它的语法很简单，可以很方便的操作类 Linux 系统上的原生命令，适合备份、快速部署等自动化工作。这是一篇 Bash 快速入门教程。</p>
+<span id="continue-reading"></span><h1 id="bash-kuai-su-ru-men">Bash 快速入门</h1>
+<p>Bash 是大部分 Linux 发行版上的默认命令行环境（Shell），通常所说的命令行命令就是在 Bash 中执行的。</p>
+<h1 id="zhun-bei-gong-zuo">准备工作</h1>
+<p>安装 Bash 软件：</p>
+<ul>
+<li>
+<p>macOS</p>
+<p>无需安装，自带 Bash。「终端」程序即可执行 Bash 脚本。</p>
+</li>
+<li>
+<p>Window</p>
+<p><a href="https://git-scm.com/download/win">下载 Git 客户端</a>，安装 Git 客户端的同时会安装一个 Bash 程序，安装后在开始菜单中找到 Bash 程序。</p>
+</li>
+<li>
+<p>Linux</p>
+<p>无需安装，自带 Bash。如果是图像界面，「终端」程序执行 Bash 脚本；命令行界面直接进入的就是 Bash 程序。</p>
+</li>
+</ul>
+<h1 id="zhu-shi">注释</h1>
+<p>在 Bash 中<code>#</code>表示注释，<code>#</code>号之后的字符串都会被忽略</p>
+<h1 id="di-yi-ge-jiao-ben">第一个脚本</h1>
+<p>我们先打开 Bash，在命令行中执行一个脚本展示根路径下的文件</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> ls /  </span><span style="color:#65737e;">#展示根路径下的文件。bash 脚本使用#号表示注释，#号后的字符会被忽略
+</span><span style="color:#bf616a;">bin</span><span>   data  etc   opt
+</span></code></pre>
+<blockquote>
+<p>说明：示例代码中，每一行最开头的<code>$</code>开头表示当前执行脚本的用户为非 root 账户。 <code>#</code>开头表示执行脚本的用户为 root 用户。</p>
+<p><strong>复制到自己的命令行中执行时，只需要复制<code>$</code>符号之后的部分。</strong></p>
+</blockquote>
+<p><code>ls</code>是 Linux 中的一个命令（即一个程序），用来列出（list）路径下的文件</p>
+<h1 id="zhi-xing-guo-cheng">执行过程</h1>
+<p>理解 Bash 脚本最重要的一点就是，<strong>每行脚本都是先拓展，再执行</strong>。</p>
+<p>拓展可以简单的理解为替换。我们把上面命令改为展示用户 home 路径下的文件：</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> ls </span><span style="color:#bf616a;">~
+</span></code></pre>
+<p>执行过程为：</p>
+<ol>
+<li>先拓展：假如用户名为 bob，<code>~</code> 会被替换为<code>/home/bob</code>。</li>
+<li>再执行：<code>ls /home/bob</code></li>
+</ol>
+<p>这种叫波浪号拓展，还有很多其他类型的拓展后续我们将陆续讲解。</p>
+<h1 id="bian-liang-tuo-zhan">变量拓展</h1>
+<p>Bash 中变量有两种，环境变量和自定义变量。</p>
+<blockquote>
+<p>我们可以用 echo 命令打印变量值，类似于其他语言中的 print 函数。</p>
+</blockquote>
+<p><strong>环境变量：</strong></p>
+<p>环境变量是启动 Bash 时就已经定义好的变量。可以直接使用。</p>
+<p>在变量名前加 <code>$</code> 符号，表示引用变量。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> echo $</span><span style="color:#bf616a;">HOME </span><span style="color:#65737e;">#HOME 变量表示用户的家路径
+</span><span style="color:#bf616a;">/home/bob
+</span></code></pre>
+<p>执行过程是通过变量拓展（Parameter Expansion）把<code>$HOME</code>拓展为<code>/home/bob</code>，再执行。</p>
+<p><strong>自定义变量：</strong></p>
+<p>下例定义一个变量 a，并将 a 的值打印出来。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> a=1 </span><span style="color:#65737e;">#定义一个变量 a。注意等号两侧不能有空格
+</span><span style="color:#bf616a;">$</span><span> echo $</span><span style="color:#bf616a;">a </span><span style="color:#65737e;">#打印 a 变量的值
+</span><span style="color:#bf616a;">1
+</span></code></pre>
+<h1 id="zi-ming-ling-tuo-zhan">子命令拓展</h1>
+<p>我们可以在一行命令中，先执行一个子命令，再执行这个命令。格式为<code>$(sub command)</code>。</p>
+<p>如下命令，先执行 <code>ls ~</code> ，然后再执行 echo 打印子命令返回结果。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> echo $(</span><span style="color:#bf616a;">ls ~</span><span>)
+</span></code></pre>
+<h1 id="xun-huan-yu-ju">循环语句</h1>
+<p>主要用到两种循环，while 循环和 for 循环。while 循环涉及到条件的判断，我们后续学习了条件再讲。我们先讲 for 循环迭代，for 循环是从「元素列表」中依次取「元素」。</p>
+<blockquote>
+<p>从这里开始就开始涉及多行的命令脚本。对于多行脚本，在交互式命令行中，回车后提示 <code>&gt;</code> 可以继续编辑，而不是直接执行。</p>
+</blockquote>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">files</span><span>=$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">ls ~</span><span style="color:#a3be8c;">)      </span><span style="color:#65737e;"># 子命令拓展，并赋值给 files 变量
+</span><span style="color:#b48ead;">for</span><span> file </span><span style="color:#b48ead;">in </span><span>$</span><span style="color:#bf616a;">files </span><span style="color:#65737e;"># 从变量 files 中轮流取出每个文件，赋值给变量 file。
+</span><span style="color:#b48ead;">do                 </span><span style="color:#65737e;"># do 表示循环体开始
+</span><span>  </span><span style="color:#96b5b4;">echo </span><span>$</span><span style="color:#bf616a;">file        </span><span style="color:#65737e;"># 每次循环需要执行的语句
+</span><span style="color:#b48ead;">done               </span><span style="color:#65737e;"># done 表示循环体结束
+</span></code></pre>
+<h1 id="tiao-jian-yu-ju">条件语句</h1>
+<p>Bash 中的条件语句，和其他编程语言差异比较大。它的条件语句需要用 test 命令进行判断。</p>
+<p>条件语句的格式如下：</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#b48ead;">if </span><span style="color:#bf616a;">test-commands</span><span>; </span><span style="color:#b48ead;">then
+</span><span>  </span><span style="color:#bf616a;">consequent-commands</span><span>;
+</span><span style="color:#bf616a;">[elif</span><span> more-test-commands; </span><span style="color:#b48ead;">then </span><span style="color:#65737e;">#elif 和 else 分支都是可选的
+</span><span>  </span><span style="color:#bf616a;">more-consequents</span><span>;</span><span style="color:#bf616a;">]
+</span><span style="color:#bf616a;">[else</span><span> alternate-consequents;</span><span style="color:#bf616a;">]
+</span><span style="color:#b48ead;">fi
+</span></code></pre>
+<p>if 后跟着条件语句（test-commands），根据条件语句的真假执行不同的条件分支。如下例所示，test 有很多种用法，详细用法可以查看 <a href="https://www.runoob.com/linux/linux-shell-test.html">这里</a>。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#b48ead;">if </span><span style="color:#bf616a;">test</span><span> 1</span><span style="color:#bf616a;"> -ne</span><span> 2;</span><span style="color:#b48ead;">then </span><span style="color:#65737e;">#判断 1 不等于（not equal） 2，这里判断为真，执行 if 分支
+</span><span>  </span><span style="color:#96b5b4;">echo</span><span> 条件为真
+</span><span style="color:#b48ead;">else
+</span><span>  </span><span style="color:#96b5b4;">echo</span><span> 条件为假
+</span><span style="color:#b48ead;">fi
+</span></code></pre>
+<p>还有一个常用的写法是，判断命令是否执行成功，如下下例所示。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">echo</span><span> 执行某行命令 </span><span style="color:#65737e;">#我们执行某行命令后，需要在脚本中判断是否执行成功
+</span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">test </span><span>$</span><span style="color:#bf616a;">? -eq</span><span> 0; </span><span style="color:#b48ead;">then 
+</span><span style="color:#65737e;"># $? 为上一条命令的返回值，-eq 0 判断上条命令是否返回值等于 （equal）0。命令返回 0 表示成功，返回 1 表示失败
+</span><span>	</span><span style="color:#96b5b4;">echo</span><span> 命令执行失败
+</span><span style="color:#b48ead;">fi
+</span></code></pre>
+<p>test 命令还有其他两种写法，但是本质上都是调用 test 命令进行了判断，<code>[</code>是对 test 的简化，所以<code>[</code>需要紧接着一个空格，否则会报错。</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#65737e;"># 单方括号写法
+</span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[</span><span> 1 </span><span style="color:#bf616a;">-ne</span><span> 2 </span><span style="color:#96b5b4;">]</span><span>;</span><span style="color:#b48ead;">then
+</span><span style="color:#b48ead;">fi
+</span><span>
+</span><span style="color:#65737e;"># 双方括号写法
+</span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[[</span><span> 1 </span><span style="color:#bf616a;">-ne</span><span> 2 </span><span style="color:#96b5b4;">]]</span><span>;</span><span style="color:#b48ead;">then
+</span><span style="color:#b48ead;">fi
+</span></code></pre>
+<h1 id="can-kao-zi-liao">参考资料</h1>
+<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">Bash Reference Manual</a></li>
+<li><a href="https://www.30secondsofcode.org/articles/s/terminal-shortcuts-cheatsheet">Bash Shortcuts Cheat Sheet</a></li>
+<li><a href="https://wangdoc.com/bash">Bash 脚本教程</a></li>
+</ul>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://hi2code.github.io/blog/tags/bash/">#Bash</a>
+                    
+                        <a href="https://hi2code.github.io/blog/tags/tool/">#Tool</a>
+                    
+                        <a href="https://hi2code.github.io/blog/tags/tutorial/">#Tutorial</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;hi2code.github.io&#x2F;blog&#x2F;shi-yong-zolada-jian-bo-ke&#x2F;">使用Zola搭建博客 ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://hi2code.github.io/blog/even.js" ></script>
+      
+    </body>
+
+</html>

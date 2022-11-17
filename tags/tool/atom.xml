@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>hi2code - Tool</title>
+	<link href="https://hi2code.github.io/blog/tags/tool/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://hi2code.github.io/blog"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-11-17T14:08:08+00:00</updated>
+	<id>https://hi2code.github.io/blog/tags/tool/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Bash 入门教程</title>
+		<published>2021-11-17T14:08:08+00:00</published>
+		<updated>2021-11-17T14:08:08+00:00</updated>
+		<link rel="alternate" href="https://hi2code.github.io/blog/bashru-men-jiao-cheng/" type="text/html"/>
+		<id>https://hi2code.github.io/blog/bashru-men-jiao-cheng/</id>
+		<content type="html">&lt;p&gt;Bash 是大部分 Linux 发行版上的默认命令行环境（Shell）。它的语法很简单，可以很方便的操作类 Linux 系统上的原生命令，适合备份、快速部署等自动化工作。这是一篇 Bash 快速入门教程。&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;bash-kuai-su-ru-men&quot;&gt;Bash 快速入门&lt;&#x2F;h1&gt;
+&lt;p&gt;Bash 是大部分 Linux 发行版上的默认命令行环境（Shell），通常所说的命令行命令就是在 Bash 中执行的。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;zhun-bei-gong-zuo&quot;&gt;准备工作&lt;&#x2F;h1&gt;
+&lt;p&gt;安装 Bash 软件：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;macOS&lt;&#x2F;p&gt;
+&lt;p&gt;无需安装，自带 Bash。「终端」程序即可执行 Bash 脚本。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Window&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;download&#x2F;win&quot;&gt;下载 Git 客户端&lt;&#x2F;a&gt;，安装 Git 客户端的同时会安装一个 Bash 程序，安装后在开始菜单中找到 Bash 程序。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux&lt;&#x2F;p&gt;
+&lt;p&gt;无需安装，自带 Bash。如果是图像界面，「终端」程序执行 Bash 脚本；命令行界面直接进入的就是 Bash 程序。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;zhu-shi&quot;&gt;注释&lt;&#x2F;h1&gt;
+&lt;p&gt;在 Bash 中&lt;code&gt;#&lt;&#x2F;code&gt;表示注释，&lt;code&gt;#&lt;&#x2F;code&gt;号之后的字符串都会被忽略&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;di-yi-ge-jiao-ben&quot;&gt;第一个脚本&lt;&#x2F;h1&gt;
+&lt;p&gt;我们先打开 Bash，在命令行中执行一个脚本展示根路径下的文件&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &#x2F;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#展示根路径下的文件。bash 脚本使用#号表示注释，#号后的字符会被忽略
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bin&lt;&#x2F;span&gt;&lt;span&gt;   data  etc   opt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;说明：示例代码中，每一行最开头的&lt;code&gt;$&lt;&#x2F;code&gt;开头表示当前执行脚本的用户为非 root 账户。 &lt;code&gt;#&lt;&#x2F;code&gt;开头表示执行脚本的用户为 root 用户。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;复制到自己的命令行中执行时，只需要复制&lt;code&gt;$&lt;&#x2F;code&gt;符号之后的部分。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;code&gt;ls&lt;&#x2F;code&gt;是 Linux 中的一个命令（即一个程序），用来列出（list）路径下的文件&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;zhi-xing-guo-cheng&quot;&gt;执行过程&lt;&#x2F;h1&gt;
+&lt;p&gt;理解 Bash 脚本最重要的一点就是，&lt;strong&gt;每行脚本都是先拓展，再执行&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;拓展可以简单的理解为替换。我们把上面命令改为展示用户 home 路径下的文件：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;执行过程为：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;先拓展：假如用户名为 bob，&lt;code&gt;~&lt;&#x2F;code&gt; 会被替换为&lt;code&gt;&#x2F;home&#x2F;bob&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;再执行：&lt;code&gt;ls &#x2F;home&#x2F;bob&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;这种叫波浪号拓展，还有很多其他类型的拓展后续我们将陆续讲解。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;bian-liang-tuo-zhan&quot;&gt;变量拓展&lt;&#x2F;h1&gt;
+&lt;p&gt;Bash 中变量有两种，环境变量和自定义变量。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们可以用 echo 命令打印变量值，类似于其他语言中的 print 函数。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;环境变量：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;环境变量是启动 Bash 时就已经定义好的变量。可以直接使用。&lt;&#x2F;p&gt;
+&lt;p&gt;在变量名前加 &lt;code&gt;$&lt;&#x2F;code&gt; 符号，表示引用变量。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; echo $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#HOME 变量表示用户的家路径
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;&#x2F;home&#x2F;bob
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;执行过程是通过变量拓展（Parameter Expansion）把&lt;code&gt;$HOME&lt;&#x2F;code&gt;拓展为&lt;code&gt;&#x2F;home&#x2F;bob&lt;&#x2F;code&gt;，再执行。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;自定义变量：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;下例定义一个变量 a，并将 a 的值打印出来。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; a=1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#定义一个变量 a。注意等号两侧不能有空格
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; echo $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#打印 a 变量的值
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;zi-ming-ling-tuo-zhan&quot;&gt;子命令拓展&lt;&#x2F;h1&gt;
+&lt;p&gt;我们可以在一行命令中，先执行一个子命令，再执行这个命令。格式为&lt;code&gt;$(sub command)&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;如下命令，先执行 &lt;code&gt;ls ~&lt;&#x2F;code&gt; ，然后再执行 echo 打印子命令返回结果。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; echo $(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ls ~&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;xun-huan-yu-ju&quot;&gt;循环语句&lt;&#x2F;h1&gt;
+&lt;p&gt;主要用到两种循环，while 循环和 for 循环。while 循环涉及到条件的判断，我们后续学习了条件再讲。我们先讲 for 循环迭代，for 循环是从「元素列表」中依次取「元素」。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;从这里开始就开始涉及多行的命令脚本。对于多行脚本，在交互式命令行中，回车后提示 &lt;code&gt;&amp;gt;&lt;&#x2F;code&gt; 可以继续编辑，而不是直接执行。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;files&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ls ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;)      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 子命令拓展，并赋值给 files 变量
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt; file &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;files &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 从变量 files 中轮流取出每个文件，赋值给变量 file。
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do                 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# do 表示循环体开始
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;file        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 每次循环需要执行的语句
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;done               &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# done 表示循环体结束
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;tiao-jian-yu-ju&quot;&gt;条件语句&lt;&#x2F;h1&gt;
+&lt;p&gt;Bash 中的条件语句，和其他编程语言差异比较大。它的条件语句需要用 test 命令进行判断。&lt;&#x2F;p&gt;
+&lt;p&gt;条件语句的格式如下：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test-commands&lt;&#x2F;span&gt;&lt;span&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;consequent-commands&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[elif&lt;&#x2F;span&gt;&lt;span&gt; more-test-commands; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#elif 和 else 分支都是可选的
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;more-consequents&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[else&lt;&#x2F;span&gt;&lt;span&gt; alternate-consequents;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;if 后跟着条件语句（test-commands），根据条件语句的真假执行不同的条件分支。如下例所示，test 有很多种用法，详细用法可以查看 &lt;a href=&quot;https:&#x2F;&#x2F;www.runoob.com&#x2F;linux&#x2F;linux-shell-test.html&quot;&gt;这里&lt;&#x2F;a&gt;。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span&gt; 1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -ne&lt;&#x2F;span&gt;&lt;span&gt; 2;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#判断 1 不等于（not equal） 2，这里判断为真，执行 if 分支
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span&gt; 条件为真
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span&gt; 条件为假
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;还有一个常用的写法是，判断命令是否执行成功，如下下例所示。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span&gt; 执行某行命令 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#我们执行某行命令后，需要在脚本中判断是否执行成功
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;? -eq&lt;&#x2F;span&gt;&lt;span&gt; 0; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# $? 为上一条命令的返回值，-eq 0 判断上条命令是否返回值等于 （equal）0。命令返回 0 表示成功，返回 1 表示失败
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span&gt; 命令执行失败
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;test 命令还有其他两种写法，但是本质上都是调用 test 命令进行了判断，&lt;code&gt;[&lt;&#x2F;code&gt;是对 test 的简化，所以&lt;code&gt;[&lt;&#x2F;code&gt;需要紧接着一个空格，否则会报错。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 单方括号写法
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt; 1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-ne&lt;&#x2F;span&gt;&lt;span&gt; 2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 双方括号写法
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;[[&lt;&#x2F;span&gt;&lt;span&gt; 1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-ne&lt;&#x2F;span&gt;&lt;span&gt; 2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;]]&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;bash&#x2F;manual&#x2F;bash.html&quot;&gt;Bash Reference Manual&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.30secondsofcode.org&#x2F;articles&#x2F;s&#x2F;terminal-shortcuts-cheatsheet&quot;&gt;Bash Shortcuts Cheat Sheet&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wangdoc.com&#x2F;bash&quot;&gt;Bash 脚本教程&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>使用Zola搭建博客</title>
+		<published>2021-07-06T14:08:08+00:00</published>
+		<updated>2021-07-06T14:08:08+00:00</updated>
+		<link rel="alternate" href="https://hi2code.github.io/blog/shi-yong-zolada-jian-bo-ke/" type="text/html"/>
+		<id>https://hi2code.github.io/blog/shi-yong-zolada-jian-bo-ke/</id>
+		<content type="html">&lt;h1 id=&quot;jie-shao&quot;&gt;介绍&lt;&#x2F;h1&gt;
+&lt;p&gt;Zola 是rust写的静态网站生成器，可以将组织好的markdown文件，生成出一个静态网页&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;an-zhuang-zola&quot;&gt;安装 Zola&lt;&#x2F;h1&gt;
+&lt;p&gt;根据 &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;getting-started&#x2F;installation&#x2F;&quot;&gt;文档&lt;&#x2F;a&gt; 在本地机器上安装 Zola，&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;macOS&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; brew install zola
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows平台上推荐使用&lt;&#x2F;p&gt;
+&lt;p&gt;下载&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;getzola&#x2F;zola&#x2F;releases&quot;&gt;预编译版本&lt;&#x2F;a&gt;，解压后是一个exe文件，放到一个常用路径中，并添加环境变量&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;安装后，测试是否安装成功&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zola --version
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zola&lt;&#x2F;span&gt;&lt;span&gt; 0.15.3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;chu-shi-hua-xiang-mu&quot;&gt;初始化项目&lt;&#x2F;h1&gt;
+&lt;p&gt;使用如下命令初始化项目，&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zola&lt;&#x2F;span&gt;&lt;span&gt; init blog
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以看到如下项目结构&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;blog
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; config.toml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#配置
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; content &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#存放markdown文件
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; sass &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#样式
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; static &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#静态文件
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; templates &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#模板
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; themes &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#主题
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;an-zhuang-zhu-ti&quot;&gt;安装主题&lt;&#x2F;h1&gt;
+&lt;p&gt;zola 有多款主题，在 &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;themes&#x2F;&quot;&gt;主题库&lt;&#x2F;a&gt; 中选择一款喜欢的主题进入它的 Homepage主页，用 git submodule 的方式添加到我们仓库中。&lt;&#x2F;p&gt;
+&lt;p&gt;下面以 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;getzola&#x2F;even&quot;&gt;even&lt;&#x2F;a&gt; 这款主题为例&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; init
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; submodule add https:&#x2F;&#x2F;github.com&#x2F;getzola&#x2F;even.git themes&#x2F;even
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通常主题都有示例文件，在 &lt;code&gt;blog\themes\tale-zola&lt;&#x2F;code&gt; 目录下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 &lt;code&gt;config.toml.example&lt;&#x2F;code&gt; 文件复制到项目根路径下，并改名为 &lt;code&gt;config.toml&lt;&#x2F;code&gt; ；&lt;&#x2F;li&gt;
+&lt;li&gt;将 &lt;code&gt;content&lt;&#x2F;code&gt;文件夹下的所有文件及文件夹，复制到项目根路径的 &lt;code&gt;content&lt;&#x2F;code&gt;文件夹下。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;ben-di-cha-kan&quot;&gt;本地查看&lt;&#x2F;h1&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zola&lt;&#x2F;span&gt;&lt;span&gt; serve
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Building&lt;&#x2F;span&gt;&lt;span&gt; site...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Checking&lt;&#x2F;span&gt;&lt;span&gt; all internal links with anchors.
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; Successfully &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;checked&lt;&#x2F;span&gt;&lt;span&gt; 0 internal link(s) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;with&lt;&#x2F;span&gt;&lt;span&gt; anchors.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; Creating 1 pages (0 orphan) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;and&lt;&#x2F;span&gt;&lt;span&gt; 1 sections
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Done&lt;&#x2F;span&gt;&lt;span&gt; in 155ms.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Web&lt;&#x2F;span&gt;&lt;span&gt; server is available at http:&#x2F;&#x2F;127.0.0.1:1024
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;用浏览器访问链接（上例中为http:&#x2F;&#x2F;127.0.0.1:1024）可以看到最终的博客效果&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;she-zhi-yuan-cheng-cang-ku&quot;&gt;设置远程仓库&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 GitHub 上建立一个仓库，名为 blog&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;将远程仓库关联到本地仓库，并推送&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; commit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -m &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;first commit&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; branch&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -M&lt;&#x2F;span&gt;&lt;span&gt; main
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; remote add origin https:&#x2F;&#x2F;github.com&#x2F;your-github-name&#x2F;blog.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; push&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -u&lt;&#x2F;span&gt;&lt;span&gt; origin main
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;pei-zhi-github-page&quot;&gt;配置 Github Page&lt;&#x2F;h1&gt;
+&lt;p&gt;在仓库中新建一个gh-pages分支，在setting页面pages选项，配置Source为gh-pages分支&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;%E4%BD%BF%E7%94%A8Zola%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.assets&#x2F;Github-Page.png&quot; alt=&quot;Github-Page&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;pei-zhi-github-action&quot;&gt;配置 Github Action&lt;&#x2F;h1&gt;
+&lt;p&gt;在项目的&lt;code&gt;.github&#x2F;workflows&lt;&#x2F;code&gt;目录下，添加一个main.yaml文件，内容如下。可以在我们修改仓库文件后，自动编译部署&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# On every push this script is executed
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;on&lt;&#x2F;span&gt;&lt;span&gt;: [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;push&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Build and deploy GH Pages
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;jobs&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;runs-on&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ubuntu-latest
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;github.ref == &amp;#39;refs&#x2F;heads&#x2F;main&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;steps&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;      - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;checkout
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;uses&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;actions&#x2F;checkout@v3.0.0
+&lt;&#x2F;span&gt;&lt;span&gt;      - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;build_and_deploy
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;uses&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;shalzz&#x2F;zola-deploy-action@master
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;env&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Target branch
+&lt;&#x2F;span&gt;&lt;span&gt;          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PAGES_BRANCH&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;gh-pages
+&lt;&#x2F;span&gt;&lt;span&gt;          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Provide personal access token
+&lt;&#x2F;span&gt;&lt;span&gt;          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;TOKEN&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;${{ secrets.GITHUB_TOKEN }}
+&lt;&#x2F;span&gt;&lt;span&gt;          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;BUILD_THEMES&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;zhuan-xie-bo-ke&quot;&gt;撰写博客&lt;&#x2F;h1&gt;
+&lt;p&gt;我们的所有markdown文件都放在项目的content路径下。&lt;&#x2F;p&gt;
+&lt;p&gt;在 Zola 中有两个概念：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;content&#x2F;section&#x2F;&quot;&gt;Section&lt;&#x2F;a&gt;：在content目录下包含&lt;code&gt;_index.md&lt;&#x2F;code&gt;的文件夹&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;content&#x2F;page&#x2F;&quot;&gt;Page&lt;&#x2F;a&gt;：在content目录下的markdown文件&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;fqa&quot;&gt;FQA&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;ru-he-yin-yong-tu-pian&quot;&gt;如何引用图片&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;content&lt;&#x2F;code&gt;目录中的图片不会被操作，需要将图片放在&lt;code&gt;static&lt;&#x2F;code&gt;目录下。&lt;&#x2F;p&gt;
+&lt;p&gt;例如，&lt;code&gt;static&#x2F;demo&#x2F;demo.png&lt;&#x2F;code&gt;在markdown文件中引用方式如下（注意：路径需要以&lt;code&gt;&#x2F;&lt;&#x2F;code&gt;开头）：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;![demo](&#x2F;demo&#x2F;demo.png)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>
